@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
     View,
     Text,
@@ -6,9 +6,7 @@ import {
     StyleSheet,
     RefreshControl,
     TouchableOpacity,
-    Pressable
 } from 'react-native';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fetchVehicles } from '../api/mockApi';
 import StatusSummary from '../components/StatusSummary';
@@ -29,11 +27,11 @@ export default function HomeScreen() {
     const [error, setError] = useState<string | null>(null);
     const [infoMessage, setInfoMessage] = useState<string | null>(null);
 
+    const [activeFilter, setActiveFilter] = useState<'hepsi' | 'aktif' | 'bakımda' | 'arızalı'>('hepsi');
     const loadCachedVehicles = useCallback(async () => {
         try {
             await AsyncStorage.removeItem(CACHE_KEY);
-        } catch {
-        }
+        } catch { }
     }, []);
 
     const loadVehicles = useCallback(async () => {
@@ -46,7 +44,6 @@ export default function HomeScreen() {
         } catch (e) {
             if (vehicles.length > 0) {
                 setInfoMessage('Veriler güncellenemedi. Son kayıtlı veri gösteriliyor.');
-                setError(null);
             } else {
                 setError('Veriler yüklenemedi. Lütfen tekrar deneyin.');
             }
@@ -57,7 +54,6 @@ export default function HomeScreen() {
     }, [vehicles.length]);
 
     useEffect(() => {
-        //  loadCachedVehicles();
         loadVehicles();
     }, [loadCachedVehicles, loadVehicles]);
 
@@ -67,7 +63,9 @@ export default function HomeScreen() {
     }, [loadVehicles]);
 
     const initialLoad = loading && vehicles.length === 0;
-
+    const filteredVehicles = activeFilter === 'hepsi'
+        ? vehicles
+        : vehicles.filter(v => v.status === activeFilter);
     if (initialLoad) {
         return (
             <View style={styles.container}>
@@ -93,19 +91,22 @@ export default function HomeScreen() {
     return (
         <View style={styles.container}>
             <FlatList
-                data={vehicles}
+                data={filteredVehicles}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
-                    <Pressable
+                    <VehicleCard
+                        vehicle={item}
                         onPress={() => navigation.navigate('Detail', { vehicle: item })}
-                    >
-                        <VehicleCard vehicle={item} />
-                    </Pressable>
+                    />
                 )}
                 ListHeaderComponent={
                     <View style={styles.headerContainer}>
                         <Text style={styles.header}>Araç Takip</Text>
-                        <StatusSummary vehicles={vehicles} />
+                        <StatusSummary
+                            vehicles={vehicles}
+                            activeFilter={activeFilter}
+                            onFilterChange={setActiveFilter}
+                        />
                         {infoMessage ? (
                             <Text style={styles.infoText}>{infoMessage}</Text>
                         ) : null}

@@ -1,42 +1,56 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useRef } from 'react';
+import { StyleSheet, Text, View, Animated, Pressable } from 'react-native';
 import { Vehicle } from '../types';
 import { COLORS } from '../constants/colors';
 import StatusBadge from './StatusBadge';
 
 interface Props {
     vehicle: Vehicle;
+    onPress?: () => void;
 }
 
-export default function VehicleCard({ vehicle }: Props) {
+export default function VehicleCard({ vehicle, onPress }: Props) {
+    const scale = useRef(new Animated.Value(1)).current;
+
+    const handlePressIn = () => {
+        Animated.spring(scale, {
+            toValue: 0.97,
+            useNativeDriver: true,
+        }).start();
+    };
+
+    const handlePressOut = () => {
+        Animated.spring(scale, {
+            toValue: 1,
+            useNativeDriver: true,
+        }).start();
+    };
+
     return (
-        <View style={styles.card}>
-            <View style={styles.row}>
-                <Text style={styles.plate}>{vehicle.plate}</Text>
-                <StatusBadge status={vehicle.status} />
-            </View>
-
-            <Text style={styles.model}>
-                {vehicle.brand} {vehicle.model} · {vehicle.year}
-            </Text>
-
-            <View style={styles.divider} />
-
-            <View style={styles.row}>
-                <View style={styles.infoItem}>
-                    <Text style={styles.infoLabel}>Sürücü</Text>
-                    <Text style={styles.infoValue}>{vehicle.driver}</Text>
+        <Pressable onPress={onPress} onPressIn={handlePressIn} onPressOut={handlePressOut}>
+            <Animated.View style={[styles.card, { transform: [{ scale }] }]}>
+                <View style={styles.row}>
+                    <Text style={styles.plate}>{vehicle.plate}</Text>
+                    <StatusBadge status={vehicle.status} />
                 </View>
-                <View style={styles.infoItem}>
-                    <Text style={styles.infoLabel}>Son Servis</Text>
-                    <Text style={styles.infoValue}>{vehicle.lastService}</Text>
+                <Text style={styles.model}>{vehicle.brand} {vehicle.model} · {vehicle.year}</Text>
+                <View style={styles.divider} />
+                <View style={styles.row}>
+                    <View style={styles.infoItem}>
+                        <Text style={styles.infoLabel}>Sürücü</Text>
+                        <Text style={styles.infoValue}>{vehicle.driver}</Text>
+                    </View>
+                    <View style={styles.infoItem}>
+                        <Text style={styles.infoLabel}>Son Servis</Text>
+                        <Text style={styles.infoValue}>{vehicle.lastService}</Text>
+                    </View>
+                    <View style={styles.infoItem}>
+                        <Text style={styles.infoLabel}>KM</Text>
+                        <Text style={styles.infoValue}>{vehicle.km.toLocaleString('tr-TR')}</Text>
+                    </View>
                 </View>
-                <View style={styles.infoItem}>
-                    <Text style={styles.infoLabel}>KM</Text>
-                    <Text style={styles.infoValue}>{vehicle.km.toLocaleString('tr-TR')}</Text>
-                </View>
-            </View>
-        </View>
+            </Animated.View>
+        </Pressable>
     );
 }
 
