@@ -49,14 +49,21 @@ Terminalde QR kod çıkacak. Expo Go uygulamasını açıp QR kodu tarayın.
 
 ## Ekran Görüntüleri
 
-| Android | iOS |
-|---------|-----|
-| ![Android Ana Ekran](screenshots/ana%20ekran.jpeg) | ![iOS Ana Ekran](screenshots/ana%20ekran-ios.JPG) |
-| ![Android Detay](screenshots/aktif%20detaylar.jpeg) | ![iOS Detay](screenshots/aktif%20detaylar-ios.JPG) |
-| ![Android Aktif](screenshots/aktif%20araçlar.jpeg) | ![iOS Aktif](screenshots/aktif-ios.JPG) |
-| ![Android Bakımda](screenshots/bakımda.jpeg) | ![iOS Bakımda](screenshots/bakımda-ios.JPG) |
-| ![Android Arızalı](screenshots/arızalı.jpeg) | ![iOS Arızalı](screenshots/arızalı-ios.JPG) |
-| ![Android Skeleton](screenshots/ekran%20kaydı-android.mp4) | |
+### Android
+
+<img src="screenshots/ana ekran.jpeg" width="300"/>
+<img src="screenshots/aktif araçlar.jpeg" width="300"/>
+<img src="screenshots/bakımda.jpeg" width="300"/>
+<img src="screenshots/arızalı.jpeg" width="300"/>
+<img src="screenshots/arızalı detaylar.jpeg" width="300"/>
+
+### iOS
+
+<img src="screenshots/ana ekran-ios.JPG" width="300"/>
+<img src="screenshots/aktif-ios.JPG" width="300"/>
+<img src="screenshots/bakımda-ios.JPG" width="300"/>
+<img src="screenshots/arızalı-ios.JPG" width="300"/>
+<img src="screenshots/arızalı detaylar-ios.JPG" width="300"/>
 
 ## Bonus Özellikler
 
