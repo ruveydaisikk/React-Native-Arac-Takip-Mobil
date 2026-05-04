@@ -1,4 +1,5 @@
 
+
 # React Native Araç Durum Takip Ekranı
 
 React Native · Expo · TypeScript ile geliştirilmiş araç filo takip uygulaması.
@@ -62,6 +63,7 @@ Terminalde QR kod çıkacak. Expo Go uygulamasını açıp QR kodu tarayın.
 
 https://github.com/user-attachments/assets/6e1847a2-f056-46a1-9e53-93d3424be95b
 
+https://github.com/user-attachments/assets/f803a276-05d1-4640-ba72-6c7124e9f646
 
 https://github.com/user-attachments/assets/91f13bd1-9b2e-47e1-a4f2-3189d340830b
 
