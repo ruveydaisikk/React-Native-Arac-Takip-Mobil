@@ -61,11 +61,16 @@ Terminalde QR kod çıkacak. Expo Go uygulamasını açıp QR kodu tarayın.
 | <img src="screenshots/arızalı araçlar.jpeg" width="200"/> | <img src="screenshots/arızalı-ios.JPG" width="200"/> |
 | <img src="screenshots/aktif.jpeg" width="200"/> | <img src="screenshots/arızalı detaylar-ios.JPG" width="200"/> |
 
-https://github.com/user-attachments/assets/6e1847a2-f056-46a1-9e53-93d3424be95b
 
-https://github.com/user-attachments/assets/f803a276-05d1-4640-ba72-6c7124e9f646
 
-https://github.com/user-attachments/assets/91f13bd1-9b2e-47e1-a4f2-3189d340830b
+https://github.com/user-attachments/assets/b673ccdd-ddac-4df2-b3cc-524e18615f1c
+
+
+
+https://github.com/user-attachments/assets/e49578e7-0494-4bd5-9683-9fcfe20e05a5
+
+
+https://github.com/user-attachments/assets/bb89ba66-bc42-4ce5-ab0f-b4d935b46ca8
 
 ## Bonus Özellikler
 
